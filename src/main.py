@@ -4,7 +4,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog
 from PyQt5.QtCore import QThread, pyqtSignal
-from Scraper.src.products_design import Ui_MainWindow
+from products_design import Ui_MainWindow
 
 
 class ScrapeThread(QThread):
