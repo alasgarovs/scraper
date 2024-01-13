@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
+    <width>660</width>
     <height>650</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>650</width>
+    <width>660</width>
     <height>650</height>
    </size>
   </property>
@@ -30,7 +30,7 @@
     <normaloff>../icons/favicon.ico</normaloff>../icons/favicon.ico</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:#ECECEC;</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="gridLayoutWidget">

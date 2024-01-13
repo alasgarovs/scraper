@@ -14,13 +14,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(650, 650)
+        MainWindow.resize(660, 650)
         MainWindow.setMinimumSize(QtCore.QSize(650, 615))
-        MainWindow.setMaximumSize(QtCore.QSize(650, 650))
+        MainWindow.setMaximumSize(QtCore.QSize(660, 650))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../icons/favicon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet("background-color:#ECECEC;")
+        MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
