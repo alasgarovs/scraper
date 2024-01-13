@@ -4,4 +4,4 @@ Məlumatları idxal etmək üçün ilk olaraq saytın source kodundan istədiyin
 
 ![scraper](https://github.com/alasgarovs/scraper/assets/70092601/91ccd852-92a4-444d-89a2-a509e71b62b8)
 
-**Not:** Əgər setup faylını istəyirsinizsə mənimlə əlaqə saxlaya bilərsiniz.
+**Not:** Setup faylı üçün əlaqə saxlaya bilərsiniz.
