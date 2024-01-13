@@ -15,7 +15,7 @@ VSVersionInfo(
         u'040904b0',
         [StringStruct(u'CompanyName', u'Sabuhi Alasgarov'),
         StringStruct(u'ProductName', u'Scraper'),
-	StringStruct(u'ProductVersion', u'1.1.0.0'),
+	StringStruct(u'ProductVersion', u'1.0.1.0'),
         StringStruct(u'OriginalFilename', u'Scraper'),
         StringStruct(u'FileDescription', u'Scraper'),
         StringStruct(u'LegalCopyright', u'Sabuhi Alasgarov. All rights reserved © 2024.'),])
