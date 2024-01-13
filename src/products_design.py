@@ -14,17 +14,17 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(650, 615)
+        MainWindow.resize(650, 650)
         MainWindow.setMinimumSize(QtCore.QSize(650, 615))
-        MainWindow.setMaximumSize(QtCore.QSize(650, 615))
+        MainWindow.setMaximumSize(QtCore.QSize(650, 650))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../icons/favicon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet("")
+        MainWindow.setStyleSheet("background-color:#ECECEC;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 13, 631, 591))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 13, 639, 631))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -34,7 +34,9 @@ class Ui_MainWindow(object):
         self.input_link.setInputMask("")
         self.input_link.setFrame(True)
         self.input_link.setObjectName("input_link")
-        self.gridLayout.addWidget(self.input_link, 2, 0, 1, 3)
+        self.gridLayout.addWidget(self.input_link, 3, 0, 1, 3)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem, 4, 1, 1, 2)
         self.button_get_data = QtWidgets.QPushButton(self.gridLayoutWidget)
         self.button_get_data.setBaseSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
@@ -44,14 +46,50 @@ class Ui_MainWindow(object):
         self.button_get_data.setFont(font)
         self.button_get_data.setStyleSheet("color:#024871;")
         self.button_get_data.setObjectName("button_get_data")
-        self.gridLayout.addWidget(self.button_get_data, 3, 0, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem, 3, 1, 1, 2)
+        self.gridLayout.addWidget(self.button_get_data, 4, 0, 1, 1)
+        self.label_image = QtWidgets.QLabel(self.gridLayoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_image.sizePolicy().hasHeightForWidth())
+        self.label_image.setSizePolicy(sizePolicy)
+        self.label_image.setMaximumSize(QtCore.QSize(466, 180))
+        self.label_image.setSizeIncrement(QtCore.QSize(0, 0))
+        self.label_image.setBaseSize(QtCore.QSize(0, 0))
+        self.label_image.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.label_image.setText("")
+        self.label_image.setPixmap(QtGui.QPixmap("../icons/scraper.png"))
+        self.label_image.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_image.setObjectName("label_image")
+        self.gridLayout.addWidget(self.label_image, 1, 1, 1, 1)
         self.line = QtWidgets.QFrame(self.gridLayoutWidget)
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.gridLayout.addWidget(self.line, 4, 0, 1, 3)
+        self.gridLayout.addWidget(self.line, 5, 0, 1, 3)
+        self.button_about = QtWidgets.QPushButton(self.gridLayoutWidget)
+        font = QtGui.QFont()
+        font.setUnderline(True)
+        self.button_about.setFont(font)
+        self.button_about.setStyleSheet("QPushButton {\n"
+"    color: black;\n"
+"    background-color: transparent;\n"
+"    border: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    color: #2FA2D7;\n"
+"    background-color: transparent;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    color: blue;\n"
+"}")
+        self.button_about.setAutoDefault(False)
+        self.button_about.setDefault(False)
+        self.button_about.setFlat(False)
+        self.button_about.setObjectName("button_about")
+        self.gridLayout.addWidget(self.button_about, 0, 0, 1, 1)
         self.gridLayout_2 = QtWidgets.QGridLayout()
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.button_export_to_excel = QtWidgets.QPushButton(self.gridLayoutWidget)
@@ -96,22 +134,31 @@ class Ui_MainWindow(object):
         self.list_info.setObjectName("list_info")
         self.verticalLayout.addWidget(self.list_info)
         self.gridLayout_2.addLayout(self.verticalLayout, 0, 0, 1, 2)
-        self.gridLayout.addLayout(self.gridLayout_2, 5, 0, 1, 3)
-        self.label_image = QtWidgets.QLabel(self.gridLayoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_image.sizePolicy().hasHeightForWidth())
-        self.label_image.setSizePolicy(sizePolicy)
-        self.label_image.setMaximumSize(QtCore.QSize(466, 180))
-        self.label_image.setSizeIncrement(QtCore.QSize(0, 0))
-        self.label_image.setBaseSize(QtCore.QSize(0, 0))
-        self.label_image.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.label_image.setText("")
-        self.label_image.setPixmap(QtGui.QPixmap("../icons/scraper.png"))
-        self.label_image.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_image.setObjectName("label_image")
-        self.gridLayout.addWidget(self.label_image, 1, 1, 1, 1)
+        self.gridLayout.addLayout(self.gridLayout_2, 6, 0, 1, 3)
+        self.button_github = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.button_github.setMaximumSize(QtCore.QSize(55, 16777215))
+        font = QtGui.QFont()
+        font.setUnderline(True)
+        self.button_github.setFont(font)
+        self.button_github.setStyleSheet("QPushButton {\n"
+"    color: black;\n"
+"    background-color: transparent;\n"
+"    border: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    color: #2FA2D7;\n"
+"    background-color: transparent;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    color: blue;\n"
+"}")
+        self.button_github.setAutoDefault(False)
+        self.button_github.setDefault(False)
+        self.button_github.setFlat(False)
+        self.button_github.setObjectName("button_github")
+        self.gridLayout.addWidget(self.button_github, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -122,4 +169,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Scraper"))
         self.input_link.setPlaceholderText(_translate("MainWindow", "link..."))
         self.button_get_data.setText(_translate("MainWindow", "Başla"))
+        self.button_about.setText(_translate("MainWindow", "Haqqında"))
         self.button_export_to_excel.setText(_translate("MainWindow", "Excel\'ə köçür"))
+        self.button_github.setText(_translate("MainWindow", "Github"))

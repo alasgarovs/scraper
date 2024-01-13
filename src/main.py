@@ -3,12 +3,13 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog
-from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtCore import QThread, pyqtSignal, Qt, QUrl
+from PyQt5.QtGui import QDesktopServices
 from products_design import Ui_MainWindow
 
 
 class ScrapeThread(QThread):
-    line_processed = pyqtSignal(str)
+    line_processed = pyqtSignal(str,int)
     finished_signal = pyqtSignal(list)
 
     def __init__(self, link):
@@ -18,7 +19,7 @@ class ScrapeThread(QThread):
     def run(self):
         page_number = 1
         product_data = []
-
+        count = 1
         while True:
             try:
                 response = requests.get(f"{self.link}&page={page_number}")
@@ -37,7 +38,8 @@ class ScrapeThread(QThread):
                         product_data.append([product_name, price])
 
                         # Emit signal for each line processed
-                        self.line_processed.emit(f' - {product_name} : {price}')
+                        self.line_processed.emit(f' - {product_name} : {price}', count)
+                        count += 1
 
                     page_number += 1
                 else:
@@ -58,6 +60,23 @@ class Main(QMainWindow, Ui_MainWindow):
         self.button_export_to_excel.hide()
         self.button_get_data.clicked.connect(self.start_scraping)
         self.button_export_to_excel.clicked.connect(self.export_to_excel)
+        self.button_about.clicked.connect(self.about)
+        self.button_github.clicked.connect(self.github)
+
+    def about(self):
+        info = """
+        Proqram  : Scraper 
+        Versiya  : 1.0.1.0
+        
+        Sabuhi Alasgarov. Müəllif hüquqları qorunur © 2024
+        Əlaqə : sabuhi.alasgarli@pm.me
+        
+        """
+        QMessageBox.information(self, 'Scraper', info)
+
+    @staticmethod
+    def github(self):
+        QDesktopServices.openUrl(QUrl("https://github.com/alasgarovs/scraper"))
 
     def start_scraping(self):
         link = self.input_link.text().strip()
@@ -71,7 +90,6 @@ class Main(QMainWindow, Ui_MainWindow):
 
         self.button_get_data.setStyleSheet('color:grey')
         self.button_get_data.setEnabled(False)
-        self.label_info.setText('Proses başladı...')
 
         self.scrape_thread = ScrapeThread(link)
         self.scrape_thread.line_processed.connect(self.update_list_info)
@@ -80,8 +98,9 @@ class Main(QMainWindow, Ui_MainWindow):
         self.scrape_thread.finished.connect(lambda: self.button_get_data.setStyleSheet('color:#024871'))
         self.scrape_thread.start()
 
-    def update_list_info(self, line):
+    def update_list_info(self, line, count):
         self.list_info.addItem(line)
+        self.label_info.setText(f'Proses başladı : Ümumi {count} məhsul')
 
     def display_scraped_data(self, product_data):
         self.write_to_file(product_data, 'products.txt')
